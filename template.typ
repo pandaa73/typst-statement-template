@@ -96,6 +96,8 @@
   "seconds": "secondi",
   "SampleGrader": "Grader di prova",
   "Grader": "Grader",
+  "InputFormat": "Formato di input",
+  "OutputFormat": "Formato di output",
 )
 
 #let localization_en = (
@@ -117,6 +119,8 @@
   "seconds": "seconds",
   "SampleGrader": "Sample Grader",
   "Grader": "Grader",
+  "InputFormat": "Input format",
+  "OutputFormat": "Output format",
 )
 
 // Section names, with translations
@@ -631,6 +635,42 @@
       }
     )
   }
+}
+
+#let rawblock(text) = {
+  show raw.where(block: true): it => block(
+    fill: luma(240),
+    stroke: 1pt + luma(220),
+    inset: 12pt,
+    width: 100%,
+    it
+  )
+
+  if type(text) == str {
+    raw(text, block: true)
+  } else if type(text) == array {
+    raw(text.map(item => str(item)).join("\n"), block: true)
+  } else if type(text) == content and text.func() == raw {
+    if text.block {
+      text
+    } else {
+      raw(text.text, block: true)
+    }
+  } else {
+    panic("rawblock: paramater has invalid type `" + str(type(text)) + "`")
+  }
+}
+
+#let inputformat(format) = {
+  context [=== #localize(text.lang, "InputFormat"):]
+
+  rawblock(format)
+}
+
+#let outputformat(format) = {
+  context [=== #localize(text.lang, "OutputFormat"):]
+
+  rawblock(format)
 }
 
 #let examples(num, infile: infile, outfile: outfile) = {
