@@ -26,8 +26,8 @@
   },
   "IntentionallyBlankPage": "Ta strona została celowo pozostawiona pusta",
   "seconds": "sekundy",
-  "SampleGrader": "Przykładowa sprawdzaczka",
-  "Grader": "Sprawdzaczka",
+  "SampleGrader": "Przykładowy program oceniający",
+  "Grader": "Program oceniający",
   "InputFormat": "Format wejściowy",
   "OutputFormat": "Format wyjściowy",
 )
